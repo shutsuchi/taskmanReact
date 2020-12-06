@@ -13,14 +13,17 @@ export const fetchAsyncLogin = createAsyncThunk("login/post", async (auth) => {
   return res.data;
 });
 
-export const fetchAsyncRegister = createAsyncThunk("login/register", async (auth) => {
-  const res = await axios.post(`${apiUrl}api/register/`, auth, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-  return res.data;
-});
+export const fetchAsyncRegister = createAsyncThunk(
+  "login/register",
+  async (auth) => {
+    const res = await axios.post(`${apiUrl}api/register/`, auth, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res.data;
+  }
+);
 
 export const fetchAsyncProf = createAsyncThunk("login/get", async () => {
   const res = await axios.get(`${apiUrl}api/myself/`, {
@@ -34,7 +37,7 @@ export const fetchAsyncProf = createAsyncThunk("login/get", async () => {
 const loginSlice = createSlice({
   name: "login",
   initialState: {
-  authen: {
+    authen: {
       username: "",
       password: "",
     },
